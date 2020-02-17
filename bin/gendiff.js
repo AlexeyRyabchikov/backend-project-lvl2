@@ -4,8 +4,13 @@ const program = require('commander'); // (normal include)
 //const program = require('../'); // include commander in git clone of commander repo
 
 program
-  .version('1.0.0')
   .description('Compares two configuration files and shows a difference.')
-  .parse(process.argv);
+  .version('1.0.0')
+  .arguments('<firstConfig> <secondConfig>')
+  .option('-f, --format [type]', 'output format')
+  .action(function (firstConfig, secondConfig) {
+    cmdValue1 = firstConfig;
+    cmdValue2 = secondConfig;
+  });
 
-if (!program.args.length) program.help();
+program.parse(process.argv);
